@@ -55,6 +55,7 @@ function renderCountriesCard(countriesData) {
         `
     }).join('');
 
+
     if (countriesData.length > 10) {
         return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         
@@ -62,6 +63,12 @@ function renderCountriesCard(countriesData) {
     
     if (countriesData.length === 1) {
         countryInfo.innerHTML = country;
+
+        const ukraine = countriesData.map(countryItem =>{
+            if (countryItem.name.official === 'Ukraine') {
+                beBraveLikeUkraine()
+            }
+        });
     } else {
         countryList.innerHTML = countriesList;
     }
@@ -75,7 +82,11 @@ function clearContainer() {
     countryInfo.innerHTML = '';
     countryList.innerHTML = '';
 };
-     
+
+
+function beBraveLikeUkraine() {
+    Notiflix.Report.success('Be brave like ukraine 🇺🇦', 'Be brave like ukraine 🇺🇦', 'OK');
+};
 
 
 
