@@ -1,19 +1,8 @@
 import refs from "./refs";
 import Notiflix from 'notiflix';
 
+
 function renderCountriesCard(countriesData) {
-
-    const country = countriesData.map(countryItem =>{
-        const{name:{official}, flags:{svg}, capital, population,languages} = countryItem;
-        return `
-         <h1>${official}</h1>
-         <img src="${svg}" alt="flag ${official}" width='100px'>
-         <p>capital: ${capital.join('')}</p>
-         <p> population: ${population}</p>
-         <p>languages: ${Object.values(languages).join('')}</p>
-        `
-    }).join('');
-
     const countriesList = countriesData.map(countryItem =>{
         const{name:{official}, flags:{svg}} = countryItem;
         return `
@@ -25,27 +14,35 @@ function renderCountriesCard(countriesData) {
             </li>
         `
     }).join('');
-
-    if (countriesData.length > 10) {
-        return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-        
-    }
-    
-    if (countriesData.length === 1) {
-        refs.countryInfo.innerHTML = country;
-
-        const ukraine = countriesData.map(countryItem =>{
-            if (countryItem.name.official === 'Ukraine') {
-                beBraveLikeUkraine()
-                const rendUkraine = '<p class="ukraine">Be brave like ukraine 🇺🇦</p>'
-
-                refs.countryInfo.insertAdjacentHTML('beforeend',rendUkraine);
-            }
-        });
-    } else {
-        refs.countryList.innerHTML = countriesList;
-    }
+    refs.countryList.innerHTML = countriesList;
 };
+
+function renderCountry(countriesData) {
+    const country = countriesData.map(countryItem =>{
+        const{name:{official}, flags:{svg}, capital, population,languages} = countryItem;
+        return `
+         <h1>${official}</h1>
+         <img src="${svg}" alt="flag ${official}" width='100px'>
+         <p>capital: ${capital.join('')}</p>
+         <p> population: ${population}</p>
+         <p>languages: ${Object.values(languages).join(', ')}</p>
+        `
+    }).join('');
+
+    refs.countryInfo.innerHTML = country;
+};
+
+function renderUkraine(countriesData) {
+    const ukraine = countriesData.map(countryItem =>{
+        if (countryItem.name.official === 'Ukraine') {
+            beBraveLikeUkraine()
+            const rendUkraine = '<p class="ukraine">Be brave like ukraine 🇺🇦</p>'
+
+            refs.countryInfo.insertAdjacentHTML('beforeend',rendUkraine);
+        }
+    });
+}
+
 
 
 function clearContainer() {
@@ -57,4 +54,10 @@ function beBraveLikeUkraine() {
     Notiflix.Report.success('Be brave like ukraine 🇺🇦', 'Support the Armed Forces of Ukraine 🤘🥷🇺🇦', 'OK');
 };
 
-export {renderCountriesCard, clearContainer};
+
+
+
+
+
+
+export {renderCountriesCard,renderCountry,renderUkraine, clearContainer};
