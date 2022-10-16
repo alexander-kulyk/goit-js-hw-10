@@ -38,7 +38,7 @@ function onInput(evt) {
                 Notiflix.Loading.remove();
                 return;
             };
-            if (countriesData.length >= 2 || countriesData.length <= 10 ) {
+            if (countriesData.length >= 2 && countriesData.length <= 10 ) {
                 renderCountriesCard(countriesData);
                 Notiflix.Loading.remove();
                 return;
