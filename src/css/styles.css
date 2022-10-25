@@ -48,3 +48,56 @@ input{
   color: rgb(78, 78, 248);
   font-size: 20px;
 }
+
+.wather-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wather-info-capital{
+  background-color: rgb(241, 239, 239);
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+.container-btn{
+  display: flex;
+  justify-content: center;
+}
+/* .wather-list-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  
+} */
+.weather-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.weather-item{
+  width: 350px;
+  margin-top: 10px;
+  margin-right: 10px;
+  list-style: none;
+
+  border-radius: 10px;
+  border: 2px solid rgb(219, 219, 219);
+  text-align: center;
+}
+
+.load-more-btn{
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  background-color: #0fa6c8;
+  color: #fafafa;
+  transition: transform 300ms;
+}
+.load-more-btn:hover{
+  transform: scale(1.1);
+  transition: transform 300ms;
+}

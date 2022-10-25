@@ -4,7 +4,10 @@ import refs from "./js/refs";
 import {renderCountriesCard,renderCountry,renderUkraine, clearContainer} from "./js/markup-countries";
 import debounce from 'lodash.debounce';
 import {fetchCountries} from "./js/fetchCountries";
+import {fetchWatherCapital } from "./js/api-wather";
+import {capitalForWAther} from "./js/wather";
 import Notiflix from 'notiflix';
+
 
 const DEBOUNCE_DELAY = 300;
 
@@ -22,6 +25,9 @@ async function onInput(evt) {
 
     try {
        const countriesData = await fetchCountries(inputValue);
+       console.log(countriesData);
+       capitalForWAther(countriesData);
+
        if (countriesData === undefined) {
             return;  
         };
@@ -39,6 +45,7 @@ async function onInput(evt) {
         };
 
         if (countriesData.length === 1) {
+            console.log(countriesData);
             renderCountry(countriesData);
             renderUkraine(countriesData);
             Notiflix.Loading.remove();
