@@ -7,6 +7,7 @@ let capitalContry = '';
 
 const capitalForWAther = countriesData =>{
 
+
     if (countriesData.length > 1) {
         clearContainerWather();
         refs.loadMoreWatherBtn.hidden = true;
@@ -17,8 +18,12 @@ const capitalForWAther = countriesData =>{
         return acc + capital;
 
     },'');
-    
 
+    if (capitalContry === 'Kyiv') {
+        
+        capitalContry = 'Kiev'
+    };
+    
     if (countriesData.length === 1) {
         takeWatherCapital(capitalContry);
     };
